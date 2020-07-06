@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootpro.mapper.PictureMapper">
+    <resultMap id="selectPic" type="java.util.HashMap">
+        <result column="id" property="id" jdbcType="BIGINT"></result>
+        <result column="picname" property="picName" jdbcType="VARCHAR"></result>
+        <result column="picurl" property="picUrl" jdbcType="VARCHAR"></result>
+    </resultMap>
+    <select id="selectAllPic" resultMap="selectPic">
+        select * from sys_picture
+    </select>
+    <insert id="insertPic">
+        insert into sys_picture (picname,picurl) values (#{param1},#{param2})
+    </insert>
+</mapper>
