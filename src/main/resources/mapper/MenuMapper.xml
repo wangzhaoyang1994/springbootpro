@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootpro.mapper.MenuMapper">
+    <select id="findAllMenu" resultType="Menu">
+        select * from sys_menu
+    </select>
+    <select id="findAllMenuByParentId" resultType="Menu">
+        select * from sys_menu where parentid = #{param1}
+    </select>
+    <select id="findAllMenuByParentIdAndRole" resultType="Menu">
+        select * from sys_menu where parentid = #{param1}  and  FIND_IN_SET(#{param2},userrole)
+    </select>
+    <insert id="addMenu" parameterType="Menu">
+        insert into sys_menu(menuname,parentid,userrole,component) values(#{menuName},#{parentId},#{userRole},#{component})
+    </insert>
+    <select id="findAllMenuByIds" resultType="Menu">
+        select * from sys_menu where id in
+        <foreach collection="list" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    <select id="findAllMenuByNotIds" resultType="Menu">
+        select * from sys_menu where id not in
+        <foreach collection="list" item="item" index="index"
+                 open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+    <update id="updateMenuRole">
+        update sys_menu set userrole=#{userrole} where id=#{id}
+    </update>
+</mapper>
