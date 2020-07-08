@@ -12,4 +12,7 @@
     <insert id="insertPic">
         insert into sys_picture (picname,picurl) values (#{param1},#{param2})
     </insert>
+    <select id="selectExport" resultType="Picture">
+        select * from sys_picture
+    </select>
 </mapper>

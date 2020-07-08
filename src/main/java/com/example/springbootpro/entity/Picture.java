@@ -1,8 +1,13 @@
 package com.example.springbootpro.entity;
 
+import com.example.springbootpro.myinterface.ExcelColumn;
+
 public class Picture {
+    @ExcelColumn(value = "序号",col = 1)
     private int id;
+    @ExcelColumn(value = "图片名称",col = 2)
     private String picName;
+    @ExcelColumn(value = "图片路径",col = 3)
     private String picUrl;
 
     public int getId() {
