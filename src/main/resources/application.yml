@@ -26,8 +26,8 @@ spring:
     #mybatis配置
 mybatis:
       #mapper配置文件
-    mapper-locations: classpath*:mapper/*.xml
-    type-aliases-package: com.example.springbootpro.entity
+    mapper-locations: classpath*:mapper/*.xml,classpath*:mapper/mh/*.xml
+    type-aliases-package: com.example.springbootpro.entity,com.example.springbootpro.mh.entity
 
 #分页pageHelper
 pagehelper:

@@ -10,7 +10,7 @@ import org.springframework.util.unit.DataSize;
 import javax.servlet.MultipartConfigElement;
 
 @SpringBootApplication
-@MapperScan("com.example.springbootpro.mapper")//批量扫描所有mapper接口
+@MapperScan({"com.example.springbootpro.mapper","com.example.springbootpro.mh.mapper"})//批量扫描所有mapper接口
 public class SpringbootproApplication {
 
 	public static void main(String[] args) {
