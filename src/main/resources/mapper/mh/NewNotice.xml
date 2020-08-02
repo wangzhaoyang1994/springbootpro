@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootpro.mh.mapper.NewNoticeMapper">
-
+    <resultMap id="selectNotice" type="java.util.HashMap">
+        <result column="id" property="id" jdbcType="BIGINT"></result>
+        <result column="noticenewname" property="noticeNewName" jdbcType="VARCHAR"></result>
+        <result column="updatedate" property="updateDate" jdbcType="TIMESTAMP"></result>
+    </resultMap>
+    <insert id="addSure">
+        insert into t_mh_newnotice (noticenewname,updatedate) values(#{param1},#{param2})
+    </insert>
+    <select id="getNoticeList" resultMap="selectNotice">
+        select * from t_mh_newnotice
+    </select>
 </mapper>
