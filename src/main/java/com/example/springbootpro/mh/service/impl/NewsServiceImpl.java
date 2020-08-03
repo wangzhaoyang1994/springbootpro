@@ -16,4 +16,9 @@ public class NewsServiceImpl implements NewsService {
     public List<News> getNewList() {
         return newsMapper.getNewList();
     }
+
+    @Override
+    public int addNews(News news) {
+        return newsMapper.addNews(news);
+    }
 }

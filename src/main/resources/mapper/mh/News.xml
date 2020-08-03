@@ -4,4 +4,7 @@
     <select id="getNewList" resultType="News">
         select * from t_mh_news
     </select>
+    <insert id="addNews" parameterType="News">
+        insert into t_mh_news (newname,content,createdate,updatedate,noticeid,noticename) values (#{newName},#{content},#{createDate},#{updateDate},#{noticeId},#{noticeName})
+    </insert>
 </mapper>
