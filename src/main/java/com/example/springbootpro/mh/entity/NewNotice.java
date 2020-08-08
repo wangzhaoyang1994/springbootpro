@@ -2,12 +2,14 @@ package com.example.springbootpro.mh.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class NewNotice implements Serializable {
     private  int id;//新闻分类id
     private String noticeNewName;//新闻分类名称
     private Date createDate;//添加日期
     private Date updateDate;//更新日期
+    private List<News> children;//新闻
 
     public int getId() {
         return id;
@@ -39,5 +41,13 @@ public class NewNotice implements Serializable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public List<News> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<News> children) {
+        this.children = children;
     }
 }

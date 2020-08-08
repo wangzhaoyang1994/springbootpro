@@ -13,8 +13,8 @@ public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsMapper newsMapper;
     @Override
-    public List<News> getNewList() {
-        return newsMapper.getNewList();
+    public List<News> getNewList(int noticeId) {
+        return newsMapper.getNewList(noticeId);
     }
 
     @Override

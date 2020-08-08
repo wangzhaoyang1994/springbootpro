@@ -8,4 +8,5 @@ import java.util.List;
 public interface NewNoticeService {
     int addSure(String name, Date updateDate);
     List<NewNotice> getNoticeList();
+    List<NewNotice> getMhNews();
 }

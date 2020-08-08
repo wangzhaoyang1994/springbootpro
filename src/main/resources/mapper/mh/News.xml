@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootpro.mh.mapper.NewsMapper">
     <select id="getNewList" resultType="News">
-        select * from t_mh_news
+        select * from t_mh_news where noticeid = #{param1}
     </select>
     <insert id="addNews" parameterType="News">
         insert into t_mh_news (newname,content,createdate,updatedate,noticeid,noticename) values (#{newName},#{content},#{createDate},#{updateDate},#{noticeId},#{noticeName})

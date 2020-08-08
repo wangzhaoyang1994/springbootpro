@@ -10,4 +10,5 @@ import java.util.List;
 public interface NewNoticeMapper {
     int addSure(String name, Date updateDate);
     List<NewNotice> getNoticeList();
+    List<NewNotice> getMhNews();
 }

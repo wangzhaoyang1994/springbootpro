@@ -12,4 +12,7 @@
     <select id="getNoticeList" resultMap="selectNotice">
         select * from t_mh_newnotice
     </select>
+    <select id="getMhNews" resultType="NewNotice">
+        select * from t_mh_newnotice limit 2
+    </select>
 </mapper>

@@ -7,6 +7,6 @@ import java.util.List;
 
 @Mapper
 public interface NewsMapper {
-    List<News> getNewList();
+    List<News> getNewList(int noticeId);
     int addNews(News news);
 }

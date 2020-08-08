@@ -19,8 +19,8 @@ public class NewsController {
     @Autowired
     private NewsService newsService;
     @RequestMapping("/list")
-    public List<News> getNewsList(){
-        return  newsService.getNewList();
+    public List<News> getNewsList(int noticeId){
+        return  newsService.getNewList(noticeId);
     }
     @RequestMapping("/addNews")
     public int addNews(@RequestParam("newList") String newList) throws ParseException {

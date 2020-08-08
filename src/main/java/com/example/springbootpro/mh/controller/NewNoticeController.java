@@ -4,6 +4,7 @@ import com.example.springbootpro.mh.entity.NewNotice;
 import com.example.springbootpro.mh.service.NewNoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DateFormat;
@@ -26,5 +27,10 @@ public class NewNoticeController {
     @RequestMapping("/list")
     public List<NewNotice> getNotice(){
         return newNoticeService.getNoticeList();
+    }
+    @RequestMapping("/getMhNew")
+    @ResponseBody
+    public List<NewNotice> getMhNews(){
+        return newNoticeService.getMhNews();
     }
 }
