@@ -36,4 +36,5 @@ public class NewsController {
         news.setNoticeName(jsonObject.optString("noticeName"));
         return newsService.addNews(news);
     }
+
 }

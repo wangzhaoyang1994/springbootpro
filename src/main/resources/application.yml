@@ -23,6 +23,9 @@ spring:
         max-idle: 20  #连接池中的最大空闲连接
         min-idle: 0  #连接池中的最小空闲连接
     timeout: 3000  #连接超时
+  data:
+    solr:
+      host: http://127.0.0.1:8983/solr/firstcore  #firstcore 是自己创建的core
     #mybatis配置
 mybatis:
       #mapper配置文件

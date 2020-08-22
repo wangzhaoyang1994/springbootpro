@@ -1,14 +1,22 @@
 package com.example.springbootpro.mh.entity;
 
+import org.apache.solr.client.solrj.beans.Field;
+
 import java.io.Serializable;
 import java.util.Date;
 
 public class News implements Serializable {
+    @Field("id")
     private  int id;//新闻id
+    @Field("news_newName")
     private String newName;//新闻名称
+    @Field("news_content")
     private String content;//新闻内容
+    @Field("news_createDate")
     private Date createDate;//创建日期
+    @Field("news_updateDate")
     private Date updateDate;//更新日期
+    @Field("news_noticeId")
     private  int noticeId;//新闻分类id
     private  String noticeName;//新闻分类名称
 
