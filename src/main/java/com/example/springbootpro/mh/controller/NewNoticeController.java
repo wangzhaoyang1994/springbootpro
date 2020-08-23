@@ -39,8 +39,8 @@ public class NewNoticeController {
         return newNoticeService.getMhNews();
     }
     @RequestMapping("/solrNews")
-    public List<NewNotice> getSolrNewsList() throws IOException, SolrServerException {
-        return  newNoticeService.getSolrMhNews();
+    public List<NewNotice> getSolrNewsList(String searchKey) throws IOException, SolrServerException {
+        return  newNoticeService.getSolrMhNews(searchKey);
     }
     @RequestMapping("delSolr")
     public String  delSolr() throws IOException, SolrServerException {

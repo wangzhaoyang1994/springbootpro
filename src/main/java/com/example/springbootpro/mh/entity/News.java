@@ -16,7 +16,6 @@ public class News implements Serializable {
     private Date createDate;//创建日期
     @Field("news_updateDate")
     private Date updateDate;//更新日期
-    @Field("news_noticeId")
     private  int noticeId;//新闻分类id
     private  String noticeName;//新闻分类名称
 

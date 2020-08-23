@@ -11,5 +11,5 @@ public interface NewNoticeService {
     int addSure(String name, Date updateDate);
     List<NewNotice> getNoticeList();
     List<NewNotice> getMhNews();
-    List<NewNotice> getSolrMhNews() throws IOException, SolrServerException;
+    List<NewNotice> getSolrMhNews(String searchKey) throws IOException, SolrServerException;
 }

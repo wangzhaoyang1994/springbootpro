@@ -5,14 +5,18 @@ import com.example.springbootpro.mh.entity.News;
 import com.example.springbootpro.mh.mapper.NewNoticeMapper;
 import com.example.springbootpro.mh.mapper.NewsMapper;
 import com.example.springbootpro.mh.service.NewNoticeService;
+import com.example.springbootpro.utils.StringUtils;
 import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.response.QueryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Service("NewNoticeService")
 public class NewNoticeServiceImpl implements NewNoticeService {
@@ -41,7 +45,7 @@ public class NewNoticeServiceImpl implements NewNoticeService {
         return newNoticesList;
     }
     @Override
-    public List<NewNotice> getSolrMhNews() throws IOException, SolrServerException {
+    public List<NewNotice> getSolrMhNews(String searchKey) throws IOException, SolrServerException {
         List<NewNotice> getSolrMhNews = this.getMhNews();
         //向solr库中添加数据
         for (int i=0;i<getSolrMhNews.size();i++){
@@ -52,11 +56,39 @@ public class NewNoticeServiceImpl implements NewNoticeService {
                 news.setContent(getSolrMhNews.get(i).getChildren().get(j).getContent());
                 news.setCreateDate(getSolrMhNews.get(i).getChildren().get(j).getCreateDate());
                 news.setUpdateDate(getSolrMhNews.get(i).getChildren().get(j).getUpdateDate());
-                news.setNoticeId(getSolrMhNews.get(i).getId());
                 solrClient.addBean(news);
                 solrClient.commit();
             }
         }
+        SolrQuery query =new SolrQuery();
+        if(StringUtils.isEmpty(searchKey)){
+            query.set("q", "*:*");
+        }else {
+            query.set("q", "news_content:"+searchKey);
+        }
+        //启动高亮
+        query.setHighlight(true);
+        query.addHighlightField("news_content");//设置高亮的域名称
+        query.setHighlightSimplePre("<font color='red'>");
+        query.setHighlightSimplePost("</font>");
+        QueryResponse queryResponse = solrClient.query(query);
+        //得到高亮数据
+        Map<String, Map<String, List<String>>> map = queryResponse.getHighlighting();
+
+        for (int i=0;i<getSolrMhNews.size();i++){
+            for (int j=0;j<getSolrMhNews.get(i).getChildren().size();j++){
+                if (map!=null) {
+                    Map<String, List<String>> map1 = map.get(getSolrMhNews.get(i).getChildren().get(j).getId() + "");
+                    if (map1 != null) {
+                        List<String> list = map1.get("news_content");
+                        if (list != null) {
+                            getSolrMhNews.get(i).getChildren().get(j).setContent(list.get(0));
+                        }
+                    }
+                }
+            }
+        }
+
         return getSolrMhNews;
     }
 }
