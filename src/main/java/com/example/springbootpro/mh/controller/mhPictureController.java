@@ -28,4 +28,11 @@ public class mhPictureController {
     public List<mhPicture> getNoticePictureList(){
         return service.getNoticePictureList();
     }
+    @RequestMapping("/deleteRedis")
+    @ResponseBody
+    public String deleteRedis(){
+        String[] strArray={"mhPic","noticePic"};
+        redisUtil.del(strArray);
+        return "删除成功";
+    }
 }

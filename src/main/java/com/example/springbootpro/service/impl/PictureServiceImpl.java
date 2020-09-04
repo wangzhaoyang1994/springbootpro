@@ -40,6 +40,9 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public int insertPic(String picName, String picUrl,int lastPage ) {
         // 添加之前删除缓存
+        if(lastPage == 0){
+            lastPage = 1;
+        }
         String [] removeKeys = new String[lastPage];
         for (int i = 0; i <lastPage ; i++) {
             removeKeys[i]=(i+1)+"";

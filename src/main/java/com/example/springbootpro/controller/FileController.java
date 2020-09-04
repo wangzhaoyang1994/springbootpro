@@ -15,7 +15,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/file")
 public class FileController {
-    @Value("F:\\image")
+    @Value("D:\\image")
     private String path;
 
     @RequestMapping("/upload")

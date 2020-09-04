@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
      * 图片保存路径，自动从yml文件中获取数据
      *   示例： E:/images/
      */
-    @Value("F:/image/")
+    @Value("d:/image/")
     private String fileSavePath;
 
     @Override
