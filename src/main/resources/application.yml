@@ -6,7 +6,7 @@ spring:
   #数据库配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/sys?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://8.131.87.154:3306/sys?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     username: root
     password: '123456'
   devtools:
@@ -27,7 +27,7 @@ spring:
     timeout: 3000  #连接超时
   data:
     solr:
-      host: http://127.0.0.1:8983/solr/firstcore  #firstcore 是自己创建的core
+      host: http://8.131.87.154:8983/solr/firstcore  #firstcore 是自己创建的core
     #mybatis配置
 mybatis:
       #mapper配置文件
@@ -43,3 +43,8 @@ pagehelper:
 logging:
   level:
     com.example.springbootpro.mapper : debug
+#图片路径本地
+#imgPath: d:/image/
+#图片路径服务器
+imgPath: /usr/local/image/
+

@@ -15,7 +15,7 @@ import java.util.Date;
 @RestController
 @RequestMapping("/file")
 public class FileController {
-    @Value("D:\\image")
+    @Value("${imgPath}")
     private String path;
 
     @RequestMapping("/upload")
@@ -48,7 +48,8 @@ public class FileController {
                 //在指定路径下创建一个文件
                 File targetFile = new File(path, fileName);
                 //协议 :// ip地址 ：端口号 / 文件目录(/images/2020/03/15/xxx.jpg)
-                String imgUrl =request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/image/"  + fileName;//需要传绝对路径前端才可以访问
+                //String imgUrl =request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/image/"  + fileName;//需要传绝对路径前端才可以访问
+                String imgUrl =request.getScheme() + "://" + request.getServerName() + "/image/"  + fileName;//需要传绝对路径前端才可以访问
                 jsonResult.put("path",imgUrl);
                 System.out.println("路径：" + imgUrl);
                 BufferedOutputStream out = new BufferedOutputStream(

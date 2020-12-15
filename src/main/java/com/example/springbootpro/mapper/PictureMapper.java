@@ -10,4 +10,5 @@ public interface PictureMapper {
     List<Picture> selectAllPic();
     int insertPic(String picName,String picUrl);
     List<Picture> selectExport();
+    int delPic();
 }
