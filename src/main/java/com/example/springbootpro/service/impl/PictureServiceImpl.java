@@ -39,6 +39,9 @@ public class PictureServiceImpl implements PictureService {
 
     @Override
     public int insertPic(String picName, String picUrl,int lastPage ) {
+        // 删除门户图片缓存
+        String[] strArray={"mhPic","noticePic"};
+        redisUtil.del(strArray);
         // 添加之前删除缓存
         if(lastPage == 0){
             lastPage = 1;
